@@ -1,0 +1,28 @@
+
+body {
+    position: relative;
+    min-height: 100vh;
+}
+.overlay {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    position: absolute;
+    filter: drop-shadow(16px 16px 10px black);
+    background: url('https://images5.alphacoders.com/115/1157351.jpg');
+    background-size: 100% 100%;
+}
+
+.overlay::before {
+    content: '';
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    position: absolute;
+    background: #333;
+    opacity: .6;
+}
