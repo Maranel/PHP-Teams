@@ -8,7 +8,6 @@
     $email = $_POST["email"];
 
     $conn = db_connect();
-
     $valchck=chckinpt($email,$username,$userid,$surename,$conn);
     if($valchck!= 4){
       insertuser($username,$surename,$userid,$email,$conn);       

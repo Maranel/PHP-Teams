@@ -39,7 +39,7 @@
                             <label for="email" class="form-label">Email:</label>
                             <input type="text" class="form-control" id="email" name="email" placeholder="Email">
                         </div>
-                        <button type="submit" class="btn btn-success">Odoslať</button>
+                        <input type="submit" class="btn btn-success" value="Odoslať">
                     </div>
                 </form>
 
