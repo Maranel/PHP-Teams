@@ -10,6 +10,7 @@ body {
     right: 0;
     display: block;
     position: absolute;
+    z-index: -1;
     filter: drop-shadow(16px 16px 10px black);
     background: url('https://images5.alphacoders.com/115/1157351.jpg');
     background-size: 100% 100%;
