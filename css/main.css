@@ -26,3 +26,8 @@ body {
     background: #333;
     opacity: .6;
 }
+
+
+#registered {
+    background: whitesmoke;
+}
