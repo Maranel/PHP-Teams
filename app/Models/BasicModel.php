@@ -9,7 +9,7 @@ class BasicModel {
     private $config;
     private $connection;
 
-    public function __construct() {
+    public function __construct($attributes = null) {
 
         // Set table name
         $this->config['table'] = new Table(strtolower((new \ReflectionClass($this))->getShortName()) . 's');
@@ -25,7 +25,7 @@ class BasicModel {
             // set object connection
             $this->config['connection'] = $conn;
             
-            $this->setAttributes();
+            $this->setAttributes($attributes);
         } catch (\PDOException $e) {
             throw $e;
         }
@@ -43,13 +43,13 @@ class BasicModel {
         return $this;
     }
 
-    private function setAttributes() {
+    private function setAttributes($attributes = null) {
         $query = $this->config['connection']->prepare("SHOW COLUMNS FROM ". $this->config['table']->getName()."");
         $query->execute();
 
         $query->setFetchMode(\PDO::FETCH_ASSOC);
         foreach($query->fetchAll() as $attr) {
-            $this->{$attr['Field']} = null;
+            $this->{$attr['Field']} = $attributes[$attr['Field']] ?? null;
         }
     }
 
@@ -71,6 +71,19 @@ class BasicModel {
         }
         $query->execute();
         return $this->find($this->id);
+    }
+
+    public function all() {
+        $query = $this->config['connection']->prepare("SELECT * FROM ". $this->config['table']->getName());
+        $query->execute();
+
+        $query->setFetchMode(\PDO::FETCH_ASSOC);
+        $collection = [];
+        $class = get_class($this);
+        foreach ($query->fetchAll() as $key => $value) {
+            $collection[] = new $class($value); 
+        }
+        return $collection;
     }
 
 }

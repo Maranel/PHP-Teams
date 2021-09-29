@@ -11,5 +11,3 @@ $userObj = $user->find(48);
 
 $userObj->username = 'Hahaha';
 $userObj->email = 'janko.hrasko@gmail.com';
-
-var_dump($userObj->update());
