@@ -37,10 +37,3 @@ body {
 #registered {
     background: whitesmoke;
 }
-
-.hide{
-    display: none;
-}
-.show{
-    display: inline;
-}

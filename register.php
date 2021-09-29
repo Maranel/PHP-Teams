@@ -2,13 +2,18 @@
     <div class="card-body">
         <h4>Welcome to the system that will change your LIFE!</h4>
         <p><small>Please register!</small></p>
+        <?php
+              if(isset($_SESSION['em']) && !empty($_SESSION['em'])){
+                echo $_SESSION['em'];  
+              }
+        ?>
         <div class="mb-3">
             <label for="username" class="form-label">Meno:</label>
             <input type="text" class="form-control" id="username" name="username" placeholder="Meno">
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Heslo:</label>
-            <input type="text" class="form-control" id="surename" name="password" placeholder="Heslo">
+            <input type="password" class="form-control" id="surename" name="password" placeholder="Heslo">
         </div>
         <div class="mb-3">
             <label for="userid" class="form-label">Nick:</label>

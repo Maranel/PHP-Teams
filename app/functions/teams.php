@@ -17,4 +17,14 @@ function create_team(string $team_name){
 }
 
 
+function delete(array $teams_id){
+    $conn = db_connect();
+    foreach( $teams_id as $id){
+      $id =  (int) $id;
+      $stmt = $conn->prepare("DELETE FROM teams WHERE id=$id");
+      $stmt->execute();
+    }
+
+}
+
 ?>

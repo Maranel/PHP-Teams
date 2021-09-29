@@ -7,7 +7,7 @@
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Heslo:</label>
-            <input type="text" class="form-control" id="password" name="password" placeholder="Heslo">
+            <input type="password" class="form-control" id="password" name="password" placeholder="Heslo">
         </div>
         <input type="submit" name="login" class="btn btn-success" value="Odoslať">
         <a href="?page=register" class="btn btn-success">Registrácia</a>
