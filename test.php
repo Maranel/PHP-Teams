@@ -7,5 +7,9 @@ use App\Models\Team;
 
 $user = new User;
 $team = new Team;
+$userObj = $user->find(48);
 
-var_dump($user->find(48), $team->find(7));
+$userObj->username = 'Hahaha';
+$userObj->email = 'janko.hrasko@gmail.com';
+
+var_dump($userObj->update());
