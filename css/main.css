@@ -28,7 +28,19 @@ body {
     opacity: .6;
 }
 
+.nav-link.active{
+    background: #333 !important;
+    color: white !important; 
+}
+
 
 #registered {
     background: whitesmoke;
+}
+
+.hide{
+    display: none;
+}
+.show{
+    display: inline;
 }

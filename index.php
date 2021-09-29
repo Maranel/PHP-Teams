@@ -1,3 +1,13 @@
+<?php
+
+    session_start();
+    $user = null;
+    if(isset($_SESSION['user']) && !empty($_SESSION['user'])){
+        $user = $_SESSION['user'];
+    }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,27 +25,87 @@
 <body>
 <div class="overlay">
     </div>
+    <?php
+    if(!empty($user)){
+        include('./partials/nav.php');
+    }    
+    
+    ?>
     <main class="container pb-5">
         <div class="row text-center text-white">
             <div class="col">
+                <?php
+                if(!empty($user)){
+                    
+                }
+                ?>
                 <h1>Gamers App</h1>
             </div>
         </div>
-        <div class="row justify-content-center pt-5">
-            <div class="col-12 col-md-4">
+   
 
                 <?php  
                     if(isset($_GET['page'])) {
-                        switch($_GET['page']) {
-                            case 'register':
-                                include('register.php');
-                                break;
-                            default:
-                                include('register.php');
-                                break;
+                        if(empty($user)){
+                            echo '<div class="row justify-content-center pt-5">
+                                <div class="col-12 col-md-4">';
+
+                            switch($_GET['page']) {
+                                case 'register':
+                                    include('register.php');
+                                    break;
+                                case 'login':
+                                    include('login.php');
+                                    break;
+                                case 'registered':
+                                    include('registered.php');
+                                    break;
+                                case 'forgotpass':
+                                    include('resetpass.php');
+                                    break;
+                                default:
+                                    include('register.php');
+                                    break;
+                            }
+                            echo '</div> </div>';
+                        }else{
+                            echo '<div class="row justify-content-center pt-5">
+                                <div class="col-12 ">';
+
+                            switch($_GET['page']) {
+                                case 'logout':
+                                    include('./app/logout.php');
+                                    break;
+                                case 'players':
+                                    include('all_players.php');
+                                    break;
+                                case 'teams':
+                                    include('teams.php');
+                                    break;
+                                case 'createam':
+                                    include('createam.php');
+                                    break;
+                                
+                                default:
+                                    include('all_players.php');
+                                    break;
+                            }
+                            echo '</div> </div>';
+                            
                         }
+                    }
+                    
+                    elseif(!empty($user)){
+                        echo '<div class="row justify-content-center pt-5">
+                        <div class="col-12  ">';
+                        include('all_players.php');
+                        echo '</div> </div>';
+
                     } else {
+                        echo '<div class="row justify-content-center pt-5">
+                        <div class="col-12 col-md-4">';
                         include('register.php');
+                        echo '</div> </div>';
                     }
                 ?>
             </div>
@@ -46,11 +116,3 @@
 </body>
 
 </html>
-
-<?php
-//  $connector = new connector('localhost','root','','mybase');
-//  $result = $connector->selectFetchAll('users');
-//  foreach($result as $itab_val){
-//      echo $itab_val['username'."surename"];
-//  }
-?>
