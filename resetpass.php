@@ -8,4 +8,14 @@
         <input type="submit" name="reset" class="btn btn-success" value="Poslať">
         <a href="?page=login" class="btn btn-unsuccess">Prihlásiť</a>
     </div>
+    <div class="card-body">
+        <h4>
+            <?php
+            if(isset($_SESSION['newpass'])){
+              echo 'New pass :'.$_SESSION['newpass'];
+              unset($_SESSION["newpass"]);
+            }
+              ?>
+              </h4>
+    </div>
 </form>
