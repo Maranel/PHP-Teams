@@ -1,6 +1,7 @@
 <?php
 
     session_start();
+    include('vendor/autoload.php');
     $user = null;
     if(isset($_SESSION['user']) && !empty($_SESSION['user'])){
         $user = $_SESSION['user'];
